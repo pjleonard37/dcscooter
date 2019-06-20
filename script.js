@@ -25,49 +25,49 @@ map.on('load', function () {
     //     map.getSource('lime').setData(limeurl);
     // }, 10000);
 
-    map.addSource('bird', {
+    map.addSource('Bird', {
         type: 'geojson', data: birdurl
     });
         map.addLayer({
-        "id": "bird",
+        "id": "Bird",
         "type": "symbol",
-        "source": "bird",
+        "source": "Bird",
         "layout": {
             "icon-image": "skateboard-15"
         }
     });
 
-    map.addSource('lime', {
+    map.addSource('Lime', {
         type: 'geojson', data: limeurl
     });
         map.addLayer({
-        "id": "lime",
+        "id": "Lime",
         "type": "symbol",
-        "source": "lime",
+        "source": "Lime",
         "layout": {
             "icon-image": "rocket-15"
         }
     });
 
-    map.addSource('jump', {
+    map.addSource('Jump', {
         type: 'geojson', data: jumpurl
     });
         map.addLayer({
-        "id": "jump",
+        "id": "Jump",
         "type": "symbol",
-        "source": "jump",
+        "source": "Jump",
         "layout": {
             "icon-image": "art-gallery-15"
         }
     });
 
-    map.addSource('lyft', {
+    map.addSource('Lyft', {
         type: 'geojson', data: lyfturl
     });
         map.addLayer({
-        "id": "lyft",
+        "id": "Lyft",
         "type": "symbol",
-        "source": "lyft",
+        "source": "Lyft",
         "layout": {
             "icon-image": "aquarium-15"
         }
@@ -86,42 +86,44 @@ map.on('load', function () {
     //     }
     // });
 
-    map.addSource('spin', {
+    map.addSource('Spin', {
         type: 'geojson', data: spinurl
     });
         map.addLayer({
-        "id": "spin",
+        "id": "Spin",
         "type": "symbol",
-        "source": "spin",
+        "source": "Spin",
         "layout": {
             "icon-image": "bank-15"
         }
     });
 
-    var toggleableLayerIds = [ 'bird', 'lime', 'jump', 'lyft', 'spin' ];
+    var toggleableLayerIds = [ 'Bird', 'Lime', 'Jump', 'Lyft', 'Spin' ];
+    var length = toggleableLayerIds.length;
 
-    for (var i = 0; i < toggleableLayerIds.length; i++) {
+    for (var i = 0; i < length; i++) {
         var id = toggleableLayerIds[i];
 
         var link = document.createElement('a');
         link.href = '#';
-        link.className = 'active';
+        link.className = 'active menu-item';
         link.textContent = id;
 
         link.onclick = function (e) {
-        var clickedLayer = this.textContent;
-        e.preventDefault();
-        e.stopPropagation();
+            console.log("clicked");
+            var clickedLayer = this.textContent;
+            e.preventDefault();
+            e.stopPropagation();
 
-        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-
-        if (visibility === 'visible') {
-                map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                this.className = '';
-            } else {
-                this.className = 'active';
-                map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-            }
+            var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+            console.log(visibility);
+            if (visibility === 'visible') {
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                    this.className = 'menu-item';
+                } else {
+                    this.className = 'active menu-item';
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                }
         };
 
         var layers = document.getElementById('menu');

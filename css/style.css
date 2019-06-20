@@ -1,11 +1,27 @@
-#body {
+.body {
   display: flex; }
-  #body #main-flow {
+  .body .main-flow {
     width: 70%;
     position: relative;
     display: block;
     min-height: 300px; }
-  #body #right-bar {
+    .body .main-flow #menu {
+      position: absolute;
+      z-index: 1;
+      display: flex;
+      justify-content: stretch;
+      width: 100%; }
+      .body .main-flow #menu .menu-item {
+        flex-grow: 1;
+        background: black;
+        text-align: center;
+        border: solid 1px white;
+        font-size: 20px;
+        text-decoration: none;
+        color: white; }
+        .body .main-flow #menu .menu-item:hover {
+          color: grey; }
+  .body .right-bar {
     width: 30%; }
 
 /*# sourceMappingURL=style.css.map */
