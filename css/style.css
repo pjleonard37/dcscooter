@@ -1,0 +1,11 @@
+#body {
+  display: flex; }
+  #body #main-flow {
+    width: 70%;
+    position: relative;
+    display: block;
+    min-height: 300px; }
+  #body #right-bar {
+    width: 30%; }
+
+/*# sourceMappingURL=style.css.map */
